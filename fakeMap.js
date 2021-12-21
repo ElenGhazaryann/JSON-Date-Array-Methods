@@ -1,17 +1,16 @@
-function fakeMap(arr, callBack) {
-  return callBack(arr);
+function myMap(arr, cb, index, array) {
+  let newArr = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    index = i;
+    array = arr;
+    newArr.push(cb(arr[i], index, array));
+  }
+  return newArr;
 }
 
 console.log(
-  fakeMap([1, 2, 3, 4], function (val, index, array) {
-    let newArr = [];
-    let i;
-    index = [];
-    array = val;
-    for (i = 0; i < val.length; i++) {
-      index.push(i);
-      newArr.push(val[i]);
-    }
-    return val;
+  myMap([1, 2, 3], function (val, index, array) {
+    return val + 5;
   })
 );
